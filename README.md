@@ -1,3 +1,5 @@
 # slot-game-c
 
-compile  '''make'''  compiling the project automaticaly executes it
+compile:    
+'''make'''  
+compiling the project automaticaly executes it.
