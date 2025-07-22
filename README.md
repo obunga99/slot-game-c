@@ -1,5 +1,7 @@
 # slot-game-c
 
 compile:    
-'''make'''  
+'''
+make
+'''  
 compiling the project automaticaly executes it.
