@@ -3,12 +3,13 @@
 int running = 1;
 int playing = 0;
 int bank = 0;
+char grid[5][5];
+
 
 static char inp_anlz(char inp);
 static void make_space();
 static void draw_grid();
-
-
+char grid_anlz(char grid[5][5]);
 
 int main()
 {
@@ -57,6 +58,8 @@ static char inp_anlz(char inp)
 
 					case 's':
 						make_space();
+						printf("				Balance: %d\n");
+						
 						draw_grid();
 						printf("				[s]pin, [q]uit\n");
 						printf("				when you are out of balance you are out literaly.\n");
@@ -84,7 +87,7 @@ static void make_space()
 static void draw_grid()
 {
 	int randInt;
-	char grid[5][5];//a 4x4 grid where the game is played sort of
+	//a 4x4 grid where the game is played sort of
 	char outcome[5] = {'G', 'A', 'B', 'S', '\0'};//the four outcomes for each of the slots on the grid
 			//G for great, A for good, B for bad, S for shit
 	grid[5][5] = '\0';
@@ -108,3 +111,4 @@ static void draw_grid()
        	printf("				|| %c || %c || %c || %c ||\n",grid[0][3], grid[1][3], grid[2][3], grid[3][3]);
 	printf("				======================\n");
 }
+
