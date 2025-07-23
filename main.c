@@ -1,12 +1,15 @@
 #include <stdio.h>
-
+#include <math.h>
 int running = 1;
 int playing = 0;
 
 
 static char inp_anlz(char inp);
 static void make_space();
-static void make_bspace();
+static void draw_grid();
+
+
+
 int main()
 {
 	while(running == 1)
@@ -16,7 +19,6 @@ int main()
 		printf("				[q]uit, [p]lay\n");
 		scanf("%c", &inp);
 		make_space();
-		make_bspace();
 		inp_anlz(inp);
 		
 
@@ -33,17 +35,17 @@ static char inp_anlz(char inp)
 	{
 		case 'q':
 			printf("				exiting...\n");
-			make_bspace();
 			running = 0;
 			break;
 
 		case 'p':
 			playing = 1;
+			printf("				[s]pin, [q]uit\n");
+			printf("				when you are out of balance you are out literaly.\n");
+	
 			while(playing==1)
 			{
 				char inp;
-				printf("				[s]pin, [q]uit\n");
-				printf("				when you are out of balance you are out literaly.\n");
 				scanf("%c", &inp);
 				
 				switch(inp)
@@ -52,10 +54,16 @@ static char inp_anlz(char inp)
 						printf("				exiting to menu...\n");
 						playing = 0;
 						break;
+
+					case 's':
+						draw_grid();
+						printf("				[s]pin, [q]uit\n");
+						printf("				when you are out of balance you are out literaly.\n");
+	
+						break;
 				}
 
-				make_space();
-				make_bspace();
+				
 			}
 			break;
 
@@ -71,12 +79,30 @@ static void make_space()
 	}
 }
 
-static void make_bspace()
+
+static void draw_grid()
 {
-	for(int i = 0; i <= 20; i++)
+	int randInt = (rand() % 3);
+	printf("%d", randInt);
+	char grid[5][5];//a 4x4 grid where the game is played sort of
+	char outcome[5] = {'G', 'A', 'B', 'S', '\0'};//the four outcomes for each of the slots on the grid
+			//G for great, A for good, B for bad, S for shit
+	grid[5][5] = '\0';
+	
+	for(int i = 0; i <= 3; i++)
 	{
-		printf("\n");
+		for(int j = 0; j <= 3; j++)
+		{
+			grid[i][j] = outcome[randInt];
+				
+		}
 	}
+	printf("				====================\n");
+	printf("				|| %c || %c || %c ||\n",grid[0][0], grid[1][0], grid[2][0]);
+	printf("				||==================\n");
+	printf("				|| %c || %c || %c ||\n",grid[0][1], grid[1][1], grid[2][1]);
+	printf("				||================||\n");
+	printf("				|| %c || %c || %c ||\n",grid[0][2], grid[1][2], grid[2][2]);
+	printf("				====================\n");	
+
 }
-
-
