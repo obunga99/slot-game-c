@@ -82,8 +82,7 @@ static void make_space()
 
 static void draw_grid()
 {
-	int randInt = (rand() % 3);
-	printf("%d", randInt);
+	int randInt;
 	char grid[5][5];//a 4x4 grid where the game is played sort of
 	char outcome[5] = {'G', 'A', 'B', 'S', '\0'};//the four outcomes for each of the slots on the grid
 			//G for great, A for good, B for bad, S for shit
@@ -93,16 +92,18 @@ static void draw_grid()
 	{
 		for(int j = 0; j <= 3; j++)
 		{
+			randInt = (rand() % 4);
 			grid[i][j] = outcome[randInt];
 				
 		}
 	}
-	printf("				====================\n");
-	printf("				|| %c || %c || %c ||\n",grid[0][0], grid[1][0], grid[2][0]);
-	printf("				||==================\n");
-	printf("				|| %c || %c || %c ||\n",grid[0][1], grid[1][1], grid[2][1]);
-	printf("				||================||\n");
-	printf("				|| %c || %c || %c ||\n",grid[0][2], grid[1][2], grid[2][2]);
-	printf("				====================\n");	
-
+	printf("				======================\n");
+	printf("				|| %c || %c || %c || %c ||\n",grid[0][0], grid[1][0], grid[2][0], grid[3][0]);
+	printf("				||====================\n");
+	printf("				|| %c || %c || %c || %c ||\n",grid[0][1], grid[1][1], grid[2][1], grid[3][0]);
+	printf("				||==================||\n");
+	printf("				|| %c || %c || %c || %c ||\n",grid[0][2], grid[1][2], grid[2][2], grid[3][2]);
+	printf("				======================\n");
+       	printf("				|| %c || %c || %c || %c ||\n",grid[0][3], grid[1][3], grid[2][3], grid[3][3]);
+	printf("				======================\n");
 }
