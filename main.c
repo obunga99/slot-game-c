@@ -3,22 +3,28 @@
 int running = 1;
 int playing = 0;
 
-static void make_space()
+
+static char inp_anlz(char inp);
+static void make_space();
+static void make_bspace();
+int main()
 {
-	for(int i = 0; i <= 100; i++)
+	while(running == 1)
 	{
-		printf("\n");
-		printf("\n");
+		char inp;
+		printf("				what do you want to do?\n");
+		printf("				[q]uit, [p]lay\n");
+		scanf("%c", &inp);
+		make_space();
+		make_bspace();
+		inp_anlz(inp);
+		
+
+
 	}
+	return 0;
 }
 
-static void make_bspace()
-{
-	for(int i = 0; i <= 20; i++)
-	{
-		printf("\n");
-	}
-}
 
 
 static char inp_anlz(char inp)
@@ -56,20 +62,21 @@ static char inp_anlz(char inp)
 	}
 }
 
-int main()
+static void make_space()
 {
-	while(running == 1)
+	for(int i = 0; i <= 100; i++)
 	{
-		char inp;
-		printf("				what do you want to do?\n");
-		printf("				[q]uit, [p]lay\n");
-		scanf("%c", &inp);
-		make_space();
-		make_bspace();
-		inp_anlz(inp);
-		
-
-
+		printf("\n");
+		printf("\n");
 	}
-	return 0;
 }
+
+static void make_bspace()
+{
+	for(int i = 0; i <= 20; i++)
+	{
+		printf("\n");
+	}
+}
+
+
