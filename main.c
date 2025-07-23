@@ -2,7 +2,7 @@
 #include <math.h>
 int running = 1;
 int playing = 0;
-
+int bank = 0;
 
 static char inp_anlz(char inp);
 static void make_space();
@@ -56,6 +56,7 @@ static char inp_anlz(char inp)
 						break;
 
 					case 's':
+						make_space();
 						draw_grid();
 						printf("				[s]pin, [q]uit\n");
 						printf("				when you are out of balance you are out literaly.\n");
