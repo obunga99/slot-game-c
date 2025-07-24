@@ -98,12 +98,13 @@ static void draw_grid()
 		{
 			randInt = (rand() % 4);
 			grid[i][j] = outcome[randInt];
+			
 				
 		}
 	}
 
 
-	printf("Balance");
+	printf("Balance: %d", bank);
 	printf("				======================\n");
 	printf("				|| %c || %c || %c || %c ||\n",grid[0][0], grid[1][0], grid[2][0], grid[3][0]);
 	printf("				||====================\n");
