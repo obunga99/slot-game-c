@@ -101,6 +101,9 @@ static void draw_grid()
 				
 		}
 	}
+
+
+	printf("Balance");
 	printf("				======================\n");
 	printf("				|| %c || %c || %c || %c ||\n",grid[0][0], grid[1][0], grid[2][0], grid[3][0]);
 	printf("				||====================\n");
