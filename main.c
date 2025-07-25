@@ -1,8 +1,9 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <math.h>
 int running = 1;
 int playing = 0;
-int bank = 0;
+int bank = 500;
 char grid[5][5];
 
 
@@ -16,6 +17,7 @@ int main()
 	while(running == 1)
 	{
 		char inp;
+		printf("You are here either you died or just got here.\n");
 		printf("				what do you want to do?\n");
 		printf("				[q]uit, [p]lay\n");
 		scanf("%c", &inp);
@@ -42,7 +44,7 @@ static char inp_anlz(char inp)
 		case 'p':
 			playing = 1;
 			printf("				[s]pin, [q]uit\n");
-			printf("				when you are out of balance you are out literaly.\n");
+			printf("				when you are out of balance you are out literaly, you get free 500 balance every new game.\n");
 	
 			while(playing==1)
 			{
@@ -58,10 +60,18 @@ static char inp_anlz(char inp)
 
 					case 's':
 						make_space();
-						printf("				Balance: %d\n");
 						
 						draw_grid();
-						printf("				[s]pin, [q]uit\n");
+						printf("				[s]pin or Enter to spin, [q]uit\n");
+						printf("				when you are out of balance you are out literaly.\n");
+	
+						break;
+
+					case '\n':
+						make_space();
+						
+						draw_grid();
+						printf("				[s]pin or Enter to spin, [q]uit\n");
 						printf("				when you are out of balance you are out literaly.\n");
 	
 						break;
@@ -99,12 +109,32 @@ static void draw_grid()
 			randInt = (rand() % 4);
 			grid[i][j] = outcome[randInt];
 			
+			switch(grid[i][j])
+			{
+				case 'G':
+					bank = bank + 10;
+					break;
+
+				case 'A':
+					bank = bank + 5;
+					break;
+
+				case 'B':
+					bank = bank - 4;
+					break;
+
+				case 'S':
+					bank = bank - 14;
+					break;
+			}
+
+			if(bank <= 0)playing = 0;
 				
 		}
 	}
 
 
-	printf("Balance: %d", bank);
+	printf("				Balance: %d\n", bank);
 	printf("				======================\n");
 	printf("				|| %c || %c || %c || %c ||\n",grid[0][0], grid[1][0], grid[2][0], grid[3][0]);
 	printf("				||====================\n");
