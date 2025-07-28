@@ -1,12 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-int running = 1;
-int playing = 0;
-int bank = 500;
-char grid[5][5];
 
+//global variables
+int running = 1;//if 0 the game will stop
+int playing = 0;//if 1 will enter the main game where you spin, if 0 it returns to the menu
+int bank = 500;//ammount of starter money
+char grid[5][5];/*the grid it is actually 4x4 but the array is of char type and counts as a string so it needs to have a null character to terminate the string pretty textbook stuff
 
+*/
+
+//funciton declarations
 static char inp_anlz(char inp);
 static void make_space();
 static void draw_grid();
@@ -14,6 +18,7 @@ char grid_anlz(char grid[5][5]);
 
 int main()
 {
+	//main loop
 	while(running == 1)
 	{
 		char inp;
@@ -112,19 +117,19 @@ static void draw_grid()
 			switch(grid[i][j])
 			{
 				case 'G':
-					bank = bank + 10;
+					bank = bank + (rand() % 20);
 					break;
 
 				case 'A':
-					bank = bank + 5;
+					bank = bank + (rand() % 10);
 					break;
 
 				case 'B':
-					bank = bank - 4;
+					bank = bank - (rand() % 5);
 					break;
 
 				case 'S':
-					bank = bank - 14;
+					bank = bank - (rand() % 14);
 					break;
 			}
 
