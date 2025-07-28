@@ -9,6 +9,7 @@ int bank = 500;//ammount of starter money
 char grid[5][5];/*the grid it is actually 4x4 but the array is of char type and counts as a string so it needs to have a null character to terminate the string pretty textbook stuff
 
 */
+FILE *scoreptr;
 
 //funciton declarations
 static char inp_anlz(char inp);
@@ -72,15 +73,28 @@ static char inp_anlz(char inp)
 	
 						break;
 
-					case '\n':
-						make_space();
-						
+					
+
+					case 'w':
+						scoreptr = fopen(".score", "w");
+						fprintf(scoreptr,"%d",  bank);
+						fclose(scoreptr);
+												break;
+
+					case 'l':
+						scoreptr = fopen(".score", "r");
+						char buff[256];
+						int realammount;
+						fgets(buff, sizeof(buff), scoreptr);
+						realammount = (int)buff;
+						bank = realammount;
+						fclose(scoreptr);
 						draw_grid();
-						printf("				[s]pin or Enter to spin, [q]uit\n");
-						printf("				when you are out of balance you are out literaly.\n");
-	
 						break;
+
+						
 				}
+
 
 				
 			}
