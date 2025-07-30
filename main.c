@@ -86,7 +86,7 @@ static char inp_anlz(char inp)
 						char buff[256];
 						int realammount;
 						fgets(buff, sizeof(buff), scoreptr);
-						realammount = (int)printf("%s\n", buff);
+						realammount = buff;
 						printf("%d", realammount);
 						bank = realammount;
 						fclose(scoreptr);
